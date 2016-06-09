@@ -427,7 +427,7 @@
 
         var refresh = function(){
           /* Get total event counts */
-            var query = MP.api.query('/api/2.0/events/', {event:events, unit: 'day', from:moment().subtract(40, 'days'), to:moment().subtract(10, 'days'), union: 1, type:'unique'}, {dataType: 'json'})
+            var query = MP.api.query('/api/2.0/events/', {event:events, unit: 'day', from:moment().subtract(20, 'days'), to:moment().subtract(10, 'days'), union: 1, type:'unique'}, {dataType: 'json'})
             query.done(function(json) {
               var values = json.data.values;
               var data = _.values(json.data.values)[0];
@@ -472,7 +472,7 @@
                 $('.monthly-actives').text(addCommas(monthlyActives));
             });
 
-            var dailyQuery = MP.api.query('/api/2.0/events/', {event:events, unit: 'day', union: 1, interval:1, from:moment().subtract(20, 'days'), to:moment().subtract(8, 'days'), type:'unique'}, {dataType: 'json'});
+            var dailyQuery = MP.api.query('/api/2.0/events/', {event:events, unit: 'day', union: 1, interval:1, from:moment().subtract(10, 'days'), to:moment().subtract(8, 'days'), type:'unique'}, {dataType: 'json'});
             dailyQuery.done(function(json){
 
                 var data = _.values(json.data.values)[0];
@@ -497,7 +497,7 @@
             $('.date-time').text(time);
             $('.date-pm').text(ampm);
 
-            var pageViewParams = {limit: 25, type:'unique', unit:'day', from: moment().subtract(50, 'days'), to: moment().subtract(10, 'days'), }
+            var pageViewParams = {limit: 25, type:'unique', unit:'day', from: moment().subtract(10, 'days'), to: moment().subtract(10, 'days'), }
             var pageViewQuery = MP.api.segment('Log In', 'client name', pageViewParams)
             
 
