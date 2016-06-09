@@ -499,10 +499,11 @@
             $('.date-pm').text(ampm);
 
             var pageViewParams = {limit: 25, type:'total', unit:'day', from: moment().subtract(50, 'days'), to: moment().subtract(10, 'days'), }
-            var pageViewQuery = MP.api.segment('Log In', pageViewParams)
+            var pageViewQuery = MP.api.segment('Log In', 'client name', pageViewParams)
             
 
             pageViewQuery.done(function(results){
+                console.log("page view query: " + results)
                 var data = {}
                 _.each(_.keys(results.values()), function(key){
                     /* sum over data in value of results.values()[key] */
